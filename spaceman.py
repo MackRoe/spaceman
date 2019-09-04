@@ -10,18 +10,18 @@ def load_word():
     f.close()
     words_list = words_list[0].split(' ')
     secret_word = random.choice(words_list)
+    print(secret_word)
 return secret_word
 
 # function to split string into list of letters_guessed
 def split(secret_word, word_letters):
-    word_letters = list(secret_word)
-    return word_letters
+    word_letters[] = list(secret_word)
+    print(word_letters[])
+    return word_letters[]
+
 
 
 def is_word_guessed(secret_word, letters_guessed):
-    # split the string into a list of letters
-    word_letters() = list(secret_word)
-    print(word_letters())
     # A function that checks if all the letters of the secret word have been guessed.
     # Args:
         # secret_word (string): the random word the user is trying to guess.
@@ -75,7 +75,9 @@ def spaceman(secret_word):
     pass
 secret_word = load_word()
 spaceman(load_word())
+
 # test
 load_word()
+split()
 print(secret_word)
 # end test

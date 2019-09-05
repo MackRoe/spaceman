@@ -15,7 +15,7 @@ return secret_word
 
 # function to split string into list of letters_guessed
 def split(secret_word, word_letters):
-    word_letters[] = list(secret_word)
+    word_letters = list(secret_word)
     print(word_letters[])
     return word_letters[]
 

@@ -1,4 +1,7 @@
 import random
+
+word_letters = []
+
 def load_word():
 # A function that reads a text file of words and randomly selects one to use as the secret word
         # from the list.
@@ -11,13 +14,13 @@ def load_word():
     words_list = words_list[0].split(' ')
     secret_word = random.choice(words_list)
     print(secret_word)
-return secret_word
+    return secret_word
 
 # function to split string into list of letters_guessed
 def split(secret_word, word_letters):
     word_letters = list(secret_word)
-    print(word_letters[])
-    return word_letters[]
+    print(word_letters)
+    return word_letters
 
 
 
@@ -74,10 +77,11 @@ def spaceman(secret_word):
 #These function calls that will start the game
     pass
 secret_word = load_word()
-spaceman(load_word())
+spaceman(secret_word)
+# changed from "spaceman(load_word())"
 
 # test
 load_word()
-split()
+split(secret_word, word_letters)
 print(secret_word)
 # end test

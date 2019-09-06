@@ -59,6 +59,41 @@ def get_guessed_word(secret_word, letters_guessed):
 
 def is_guess_in_word(guess, word_letters):
     # changed secret_word to word_letters
+    wrong_guess_count = 0
+    guesses_left = 7 - wrong_guess_count
+    if guess in word_letters:
+        print("You have guessed correctly.")
+    else:
+        wrong_guess_count += 1
+        print("Good try, but that is not one of the letters.")
+        print("You have " + guesses_left + " guesses remaining.")
+        if wrong_guess_count = 1:
+            print(" | ")
+        elif wrong_guess_count = 2:
+            print(" | ")
+            print(" O ")
+        elif wrong_guess_count = 3:
+            print(" | ")
+            print(" O_")
+        elif wrong_guess_count = 4:
+            print(" | ")
+            print("_O_")
+        elif wrong_guess_count = 5:
+            print(" | ")
+            print("_O_")
+            print(" | ")
+        elif wrong_guess_count = 6:
+            print(" | ")
+            print("_O_")
+            print(" | ")
+            print("/  ")
+        elif wrong_guess_count = 7:
+            print(" | ")
+            print("_O_")
+            print(" | ")
+            print("/ \\")
+
+
 
     # A function to check if the guessed letter is in the secret word
     # Args:
@@ -68,9 +103,21 @@ def is_guess_in_word(guess, word_letters):
         # bool: True if the guess is in the secret_word, False otherwise
 
 #TODO: check if the letter guess is in the secret word
-    pass
-def spaceman(secret_word):
 
+def gameplay(secret_word):
+    wordlength = len(secret_word)
+    
+
+def spaceman(secret_word):
+    play = input('Would you like to play a game? [Y or N]')
+        if play == "Y":
+            print("It's on")
+            gameplay()
+        elif play == "What game?"
+            print("It's called Spaceman /n You get 7 tries to guess all the letters in a random word. /n Do you want to play?")
+            spaceman()
+        else:
+            print("Have a great day.")
     # A function that controls the game of spaceman. Will start spaceman in the command line.
     # Args:
       # secret_word (string): the secret word to guess.
@@ -81,7 +128,9 @@ def spaceman(secret_word):
 #TODO: show the guessed word so far
 #TODO: check if the game has been won or lost
 #These function calls that will start the game
-    pass
+
+
+
 
 secret_word = load_word()
 

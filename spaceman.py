@@ -1,6 +1,7 @@
 import random
 
 word_letters = []
+secret_word = "boo"
 
 def load_word():
 # A function that reads a text file of words and randomly selects one to use as the secret word
@@ -114,15 +115,18 @@ def gameplay(secret_word):
     print(blank)
 
 def spaceman(secret_word):
-    play = input('Would you like to play a game? [Y or N]')
-        if play == "Y":
-            print("It's on")
-            gameplay()
-        elif play == "What game?"
-            print("It's called Spaceman /n You get 7 tries to guess all the letters in a random word. /n Do you want to play?")
-            spaceman()
-        else:
-            print("Have a great day.")
+    load_word()
+    play = input('Would you like to play a game? [Y or N] ')
+    if play == "Y" or "y":
+        print("It's on!")
+        gameplay()
+    elif play == "What game?":
+        print("It's called Spaceman")
+        print("You get 7 tries to guess all the letters in a random word.")
+        input("Do you want to play? [Y or N] ")
+        gameplay()
+    else:
+        print("Have a great day.")
     # A function that controls the game of spaceman. Will start spaceman in the command line.
     # Args:
       # secret_word (string): the secret word to guess.

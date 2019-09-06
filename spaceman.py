@@ -67,27 +67,27 @@ def is_guess_in_word(guess, word_letters):
         wrong_guess_count += 1
         print("Good try, but that is not one of the letters.")
         print("You have " + guesses_left + " guesses remaining.")
-        if wrong_guess_count = 1:
+        if wrong_guess_count == 1:
             print(" | ")
-        elif wrong_guess_count = 2:
+        elif wrong_guess_count == 2:
             print(" | ")
             print(" O ")
-        elif wrong_guess_count = 3:
+        elif wrong_guess_count == 3:
             print(" | ")
             print(" O_")
-        elif wrong_guess_count = 4:
+        elif wrong_guess_count == 4:
             print(" | ")
             print("_O_")
-        elif wrong_guess_count = 5:
+        elif wrong_guess_count == 5:
             print(" | ")
             print("_O_")
             print(" | ")
-        elif wrong_guess_count = 6:
+        elif wrong_guess_count == 6:
             print(" | ")
             print("_O_")
             print(" | ")
             print("/  ")
-        elif wrong_guess_count = 7:
+        elif wrong_guess_count == 7:
             print(" | ")
             print("_O_")
             print(" | ")
@@ -105,8 +105,13 @@ def is_guess_in_word(guess, word_letters):
 #TODO: check if the letter guess is in the secret word
 
 def gameplay(secret_word):
+    # words exceeding seven letters in length have been relocated
+    # new file: words-over-seven-letters
     wordlength = len(secret_word)
-    
+    blank = "_"
+    while wordlength <= 7:
+        blank += blank
+    print(blank)
 
 def spaceman(secret_word):
     play = input('Would you like to play a game? [Y or N]')

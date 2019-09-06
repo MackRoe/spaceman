@@ -58,10 +58,12 @@ def get_guessed_word(secret_word, letters_guessed):
     return letters_guessed
 
 
-def is_guess_in_word(guess, word_letters):
+def is_guess_in_word(letters_guessed, guess, word_letters):
     # changed secret_word to word_letters
+    # added letters_guessed
     wrong_guess_count = 0
     guesses_left = 7 - wrong_guess_count
+    #wrong_guess_count shound be index of letters_guessed
     if guess in word_letters:
         print("You have guessed correctly.")
     else:
@@ -93,6 +95,9 @@ def is_guess_in_word(guess, word_letters):
             print("_O_")
             print(" | ")
             print("/ \\")
+            print("---")
+            print("GAME OVER")
+
 
 
 
@@ -105,14 +110,20 @@ def is_guess_in_word(guess, word_letters):
 
 #TODO: check if the letter guess is in the secret word
 
-def gameplay(secret_word):
+def gameplay(secret_word, guess):
     # words exceeding seven letters in length have been relocated
     # new file: words-over-seven-letters
     wordlength = len(secret_word)
     blank = "_"
     while wordlength <= 7:
         blank += blank
+
+    get_guessed_word()
+    print("You have guessed {}").format(guess)
+    print("...")
     print(blank)
+    print("...")
+    is_word_guessed()
 
 def spaceman(secret_word):
     load_word()
@@ -120,13 +131,14 @@ def spaceman(secret_word):
     if play == "Y" or "y":
         print("It's on!")
         gameplay()
-    elif play == "What game?":
-        print("It's called Spaceman")
-        print("You get 7 tries to guess all the letters in a random word.")
-        input("Do you want to play? [Y or N] ")
-        gameplay()
+    # commented out for debug test
+    # elif play == "What game?":
+    #    print("It's called Spaceman")
+    #    print("You get 7 tries to guess all the letters in a random word.")
+    #    input("Do you want to play? [Y or N] ")
+    #    gameplay()
     else:
-        print("Have a great day.")
+        print("Input fail. Have a great day.")
     # A function that controls the game of spaceman. Will start spaceman in the command line.
     # Args:
       # secret_word (string): the secret word to guess.
@@ -142,6 +154,9 @@ def spaceman(secret_word):
 
 
 secret_word = load_word()
+
+#test to # DEBUG:
+print(load_word())
 
 spaceman(secret_word)
 # changed from "spaceman(load_word())"

@@ -130,7 +130,7 @@ def spaceman(secret_word):
     play = input('Would you like to play a game? [Y or N] ')
     if play == "Y" or "y":
         print("It's on!")
-        gameplay()
+        # gameplay()
     # commented out for debug test
     # elif play == "What game?":
     #    print("It's called Spaceman")

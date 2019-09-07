@@ -1,9 +1,10 @@
 import random
 
+letters_guessed = []
 word_letters = []
 secret_word = "boo"
 
-def load_word():
+def load_word(secret_word):
 # A function that reads a text file of words and randomly selects one to use as the secret word
         # from the list.
     # Returns:
@@ -54,8 +55,9 @@ def get_guessed_word(secret_word, letters_guessed):
     # guessed correctly so far that are saved in letters_guessed and underscores for the letters that have
     # not been guessed yet
     guess = input("What letter would you like to guess? ")
-    guess = letters_guessed + guess
-    return letters_guessed
+    print(letters_guessed.append(guess))
+
+    return guess
 
 
 def is_guess_in_word(letters_guessed, guess, word_letters):
@@ -69,7 +71,7 @@ def is_guess_in_word(letters_guessed, guess, word_letters):
     else:
         wrong_guess_count += 1
         print("Good try, but that is not one of the letters.")
-        print("You have " + guesses_left + " guesses remaining.")
+        print("You have " + str(guesses_left) + " guesses remaining.")
         if wrong_guess_count == 1:
             print(" | ")
         elif wrong_guess_count == 2:
@@ -113,24 +115,42 @@ def is_guess_in_word(letters_guessed, guess, word_letters):
 def gameplay(secret_word, guess):
     # words exceeding seven letters in length have been relocated
     # new file: words-over-seven-letters
-    wordlength = len(secret_word)
-    blank = "_"
-    while wordlength <= 7:
-        blank += blank
 
-    get_guessed_word()
+    # potential logic flaw - while test value is not decreasing
+    wordlength = len(secret_word)
+    blanks_printed = wordlength
+    blank = "_"
+    while blanks_printed <= 7:
+        blank += blank
+        blanks_printed += 1
+        print(blank)
+
+    get_guessed_word(secret_word, letters_guessed)
+
+    is_guess_in_word(letters_guessed, guess, word_letters)
+
+
+
+    get_guessed_word(secret_word, letters_guessed)
     print("You have guessed {}").format(guess)
     print("...")
     print(blank)
     print("...")
-    is_word_guessed()
+    is_word_guessed(secret_word, letters_guessed)
 
 def spaceman(secret_word):
-    load_word()
-    play = input('Would you like to play a game? [Y or N] ')
+    #secret_word = load_word()
+
+    # test
+    # load_word(secret_word)
+    split(secret_word, word_letters)
+    print(secret_word)
+    # end test
+    play = input("Would you like to play a game? [Y or N] ")
     if play == "Y" or "y":
         print("It's on!")
-        # gameplay()
+        guess = " "
+        gameplay(secret_word, guess)
     # commented out for debug test
     # elif play == "What game?":
     #    print("It's called Spaceman")
@@ -153,16 +173,10 @@ def spaceman(secret_word):
 
 
 
-secret_word = load_word()
+secret_word = load_word(secret_word)
 
-#test to # DEBUG:
-print(load_word())
+# test to # DEBUG:
+# print(load_word(secret_word))
 
 spaceman(secret_word)
 # changed from "spaceman(load_word())"
-
-# test
-load_word()
-split(secret_word, word_letters)
-print(secret_word)
-# end test

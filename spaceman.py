@@ -146,7 +146,7 @@ def gameplay(secret_word, guess):
 
     # add guess to blank at correct index
     # then remove extra item from blank
-
+    letter_index = list.index(word_letters)
     blank.insert(letter_index, guess)
     blank.pop(len(secret_word))
 

@@ -55,7 +55,7 @@ def get_guessed_word(secret_word, letters_guessed):
     # guessed correctly so far that are saved in letters_guessed and underscores for the letters that have
     # not been guessed yet
     guess = input("What letter would you like to guess? ")
-    print(letters_guessed.append(guess))
+    print("So far you have guessed: " + letters_guessed.append(guess))
 
     return guess
 
@@ -68,6 +68,21 @@ def is_guess_in_word(letters_guessed, guess, word_letters):
     #wrong_guess_count shound be index of letters_guessed
     if guess in word_letters:
         print("You have guessed correctly.")
+        letter_occurence = 1
+        # find index of guessed letter
+        letter_index = list.index(word_letters)
+        # display guessed letter within context of word
+        gameplay()
+        # append guess to letters_guessed
+
+        # check for additional occurence of guess within word
+
+        word_letters = word_letters - guess
+        letters_guessed = letters_guessed + guess
+        if guess in word_letters:
+            letter_occurence += 1
+            print(guess + " is in the word " + int(x) + " times.")
+
     else:
         wrong_guess_count += 1
         print("Good try, but that is not one of the letters.")
@@ -129,10 +144,15 @@ def gameplay(secret_word, guess):
 
     is_guess_in_word(letters_guessed, guess, word_letters)
 
+    # add guess to blank at correct index
+    # then remove extra item from blank
 
+    blank.insert(letter_index, guess)
+    blank.pop(len(secret_word))
 
     get_guessed_word(secret_word, letters_guessed)
-    print("You have guessed {}").format(guess)
+    print("You have guessed " + guess)
+
     print("...")
     print(blank)
     print("...")
@@ -151,12 +171,7 @@ def spaceman(secret_word):
         print("It's on!")
         guess = " "
         gameplay(secret_word, guess)
-    # commented out for debug test
-    # elif play == "What game?":
-    #    print("It's called Spaceman")
-    #    print("You get 7 tries to guess all the letters in a random word.")
-    #    input("Do you want to play? [Y or N] ")
-    #    gameplay()
+
     else:
         print("Input fail. Have a great day.")
     # A function that controls the game of spaceman. Will start spaceman in the command line.

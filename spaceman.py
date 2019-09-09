@@ -1,8 +1,14 @@
 import random
 
+#empty list to contain letters (str type variables)  guessed by user
 letters_guessed = []
+
+#empty list to contain the list of letters contained in the secret word
 word_letters = []
+
+# initialized variables
 secret_word = "boo"
+guess = "x"
 
 def load_word(secret_word):
 # A function that reads a text file of words and randomly selects one to use as the secret word
@@ -34,14 +40,20 @@ def is_word_guessed(secret_word, letters_guessed):
         # letters_guessed (list of strings): list of letters that have been guessed so far.
     # Returns:
     if word_letters == letters_guessed:
-        return True
+        bool = True
+
+        print("You have correctly guessed the word. You win!")
+        return bool
     else:
-        return False
+        bool = False
+
+        print("please guess another letter")
+        return bool
         # bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
 
 # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-# pass (commented out unfamiliar command)
-def get_guessed_word(secret_word, letters_guessed):
+
+def get_guessed_word(secret_word, letters_guessed, guess):
 
     # A function that is used to get a string showing the letters guessed so far in the secret word and underscores for letters that have not been guessed yet.
     # Args:
@@ -54,10 +66,25 @@ def get_guessed_word(secret_word, letters_guessed):
 #TODO: Loop through the letters in secret word and build a string that shows the letters that have been
     # guessed correctly so far that are saved in letters_guessed and underscores for the letters that have
     # not been guessed yet
-    guess = input("What letter would you like to guess? ")
-    print("So far you have guessed: " + letters_guessed.append(guess))
 
-    return guess
+    # # DEBUG:
+    print(secret_word)
+
+    guess = input("What letter would you like to guess? ")
+    # print to  DEBUG
+    print(guess + " is your guess.")
+    # guess is a string variable with one item
+    if len(guess) > 1:
+        print("Please guess only one letter")
+    else:
+        print("Checking to see if letter is in word")
+
+    letters_guessed.extend(guess)
+    print("So far you have guessed: " + str(letters_guessed))
+    print(" ")
+    # Issue: str(letters_guessed.append(guess) is outputting "None".
+    # ... should output the list of all letters guessed
+    return letters_guessed, guess
 
 
 def is_guess_in_word(letters_guessed, guess, word_letters):
@@ -66,22 +93,27 @@ def is_guess_in_word(letters_guessed, guess, word_letters):
     wrong_guess_count = 0
     guesses_left = 7 - wrong_guess_count
     #wrong_guess_count shound be index of letters_guessed
-    if guess in word_letters:
-        print("You have guessed correctly.")
-        letter_occurence = 1
-        # find index of guessed letter
-        letter_index = list.index(word_letters)
+    for i in word_letters:
+        if i == guess:
+            print("You have guessed correctly.")
+            letter_occurence = 1
+            # find index of guessed letter
+            letter_index = list.index(word_letters)
         # display guessed letter within context of word
-        gameplay()
+    #   gameplay()  #?
         # append guess to letters_guessed
 
         # check for additional occurence of guess within word
 
         word_letters = word_letters - guess
         letters_guessed = letters_guessed + guess
-        if guess in word_letters:
-            letter_occurence += 1
-            print(guess + " is in the word " + int(x) + " times.")
+        for i in word_letters:
+            if i == guess:
+                letter_occurence += 1
+                print(guess + " is in the word " + int(x) + " times.")
+            else:
+                continue
+        return word_letters
 
     else:
         wrong_guess_count += 1
@@ -131,16 +163,13 @@ def gameplay(secret_word, guess):
     # words exceeding seven letters in length have been relocated
     # new file: words-over-seven-letters
 
-    # potential logic flaw - while test value is not decreasing
     wordlength = len(secret_word)
     blanks_printed = wordlength
     blank = "_"
-    while blanks_printed <= 7:
-        blank += blank
-        blanks_printed += 1
-        print(blank)
+    print(blank * wordlength)
+    # the * prints repetitions
 
-    get_guessed_word(secret_word, letters_guessed)
+    get_guessed_word(secret_word, letters_guessed, guess)
 
     is_guess_in_word(letters_guessed, guess, word_letters)
 
@@ -153,10 +182,8 @@ def gameplay(secret_word, guess):
     get_guessed_word(secret_word, letters_guessed)
     print("You have guessed " + guess)
 
-    print("...")
-    print(blank)
-    print("...")
     is_word_guessed(secret_word, letters_guessed)
+
 
 def spaceman(secret_word):
     #secret_word = load_word()

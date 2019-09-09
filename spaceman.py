@@ -9,6 +9,7 @@ word_letters = []
 # initialized variables
 secret_word = "boo"
 guess = "x"
+newstring = ""
 
 def load_word(secret_word):
 # A function that reads a text file of words and randomly selects one to use as the secret word
@@ -39,7 +40,7 @@ def is_word_guessed(secret_word, letters_guessed):
         # secret_word (string): the random word the user is trying to guess.
         # letters_guessed (list of strings): list of letters that have been guessed so far.
     # Returns:
-    if word_letters == letters_guessed:
+    if list(secret_word) == letters_guessed:
         bool = True
 
         print("You have correctly guessed the word. You win!")
@@ -53,7 +54,7 @@ def is_word_guessed(secret_word, letters_guessed):
 
 # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
 
-def get_guessed_word(secret_word, letters_guessed, guess):
+def get_guessed_word(secret_word, letters_guessed, guess, newstring):
 
     # A function that is used to get a string showing the letters guessed so far in the secret word and underscores for letters that have not been guessed yet.
     # Args:
@@ -87,73 +88,24 @@ def get_guessed_word(secret_word, letters_guessed, guess):
     return letters_guessed, guess
 
 
-def is_guess_in_word(letters_guessed, guess, word_letters):
-    # changed secret_word to word_letters
-    # added letters_guessed
-    wrong_guess_count = 0
-    guesses_left = 7 - wrong_guess_count
-    #wrong_guess_count shound be index of letters_guessed
-    for i in word_letters:
-        if i == guess:
-            print("You have guessed correctly.")
-            letter_occurence = 1
-            # find index of guessed letter
-            letter_index = list.index(word_letters)
-        # display guessed letter within context of word
-    #   gameplay()  #?
-        # append guess to letters_guessed
+def is_guess_in_word(guess, word_letters, bool):
+    print(word_letters)
+    if str(guess) in word_letters:
+        print("That is a correct guess")
 
-        # check for additional occurence of guess within word
 
-        word_letters = word_letters - guess
-        letters_guessed = letters_guessed + guess
-        for i in word_letters:
-            if i == guess:
-                letter_occurence += 1
-                print(guess + " is in the word " + int(x) + " times.")
-            else:
-                continue
-        return word_letters
-
+        bool = True
+        return bool
     else:
-        wrong_guess_count += 1
-        print("Good try, but that is not one of the letters.")
-        print("You have " + str(guesses_left) + " guesses remaining.")
-        if wrong_guess_count == 1:
-            print(" | ")
-        elif wrong_guess_count == 2:
-            print(" | ")
-            print(" O ")
-        elif wrong_guess_count == 3:
-            print(" | ")
-            print(" O_")
-        elif wrong_guess_count == 4:
-            print(" | ")
-            print("_O_")
-        elif wrong_guess_count == 5:
-            print(" | ")
-            print("_O_")
-            print(" | ")
-        elif wrong_guess_count == 6:
-            print(" | ")
-            print("_O_")
-            print(" | ")
-            print("/  ")
-        elif wrong_guess_count == 7:
-            print(" | ")
-            print("_O_")
-            print(" | ")
-            print("/ \\")
-            print("---")
-            print("GAME OVER")
-
-
+        print("Sorry, but no. That letter is not in the word.")
+        bool = False
+        return bool
 
 
     # A function to check if the guessed letter is in the secret word
     # Args:
         # guess (string): The letter the player guessed this round
-        # secret_word (string): The secret word
+        # secret_word (string): The secret word -- ## replaced with word_letters
     #Returns:
         # bool: True if the guess is in the secret_word, False otherwise
 
@@ -166,21 +118,25 @@ def gameplay(secret_word, guess):
     wordlength = len(secret_word)
     blanks_printed = wordlength
     blank = "_"
-    print(blank * wordlength)
+    blank = blank * wordlength
+    print(blank)
     # the * prints repetitions
 
-    get_guessed_word(secret_word, letters_guessed, guess)
+    get_guessed_word(secret_word, letters_guessed, guess, newstring)
 
-    is_guess_in_word(letters_guessed, guess, word_letters)
+    if is_guess_in_word(letters_guessed, guess, word_letters):
 
-    # add guess to blank at correct index
-    # then remove extra item from blank
-    letter_index = list.index(word_letters)
-    blank.insert(letter_index, guess)
-    blank.pop(len(secret_word))
+        # add guess to blank at correct index
+        # then remove extra item from blank
+        letter_index = list.index(word_letters)
+        blank.insert(letter_index, guess)
+        blank.pop(len(secret_word))
+        print(blank)
 
-    get_guessed_word(secret_word, letters_guessed)
+    get_guessed_word(secret_word, letters_guessed, guess, newstring)
     print("You have guessed " + guess)
+
+    is_guess_in_word(guess, word_letters, bool)
 
     is_word_guessed(secret_word, letters_guessed)
 

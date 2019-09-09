@@ -1,0 +1,59 @@
+# removed from is_guess_in_word function
+# changed secret_word to word_letters
+# added letters_guessed
+wrong_guess_count = 0
+guesses_left = 7 - wrong_guess_count
+#wrong_guess_count shound be number of wrong guesses
+for i in word_letters:
+    if i == guess:
+        print("You have guessed correctly.")
+        letter_occurence = 1
+        # find index of guessed letter
+        letter_index = list.index(word_letters)
+    # display guessed letter within context of word
+#   gameplay()  #?
+    # append guess to letters_guessed
+
+    # check for additional occurence of guess within word
+
+    word_letters = word_letters - guess
+    letters_guessed = letters_guessed + guess
+    for i in word_letters:
+        if i == guess:
+            letter_occurence += 1
+            print(guess + " is in the word " + int(x) + " times.")
+        else:
+            continue
+    return word_letters
+
+else:
+    wrong_guess_count += 1
+    print("Good try, but that is not one of the letters.")
+    print("You have " + str(guesses_left) + " guesses remaining.")
+    if wrong_guess_count == 1:
+        print(" | ")
+    elif wrong_guess_count == 2:
+        print(" | ")
+        print(" O ")
+    elif wrong_guess_count == 3:
+        print(" | ")
+        print(" O_")
+    elif wrong_guess_count == 4:
+        print(" | ")
+        print("_O_")
+    elif wrong_guess_count == 5:
+        print(" | ")
+        print("_O_")
+        print(" | ")
+    elif wrong_guess_count == 6:
+        print(" | ")
+        print("_O_")
+        print(" | ")
+        print("/  ")
+    elif wrong_guess_count == 7:
+        print(" | ")
+        print("_O_")
+        print(" | ")
+        print("/ \\")
+        print("---")
+        print("GAME OVER")

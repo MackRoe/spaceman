@@ -3,7 +3,7 @@
 # added letters_guessed
 wrong_guess_count = 0
 guesses_left = 7 - wrong_guess_count
-#wrong_guess_count shound be number of wrong guesses
+#wrong_guess_count should be number of wrong guesses
 for i in word_letters:
     if i == guess:
         print("You have guessed correctly.")

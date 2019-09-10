@@ -29,7 +29,9 @@ def is_word_guessed(secret_word, letters_guessed):
         # secret_word (string): the random word the user is trying to guess.
         # letters_guessed (list of strings): list of letters that have been guessed so far.
     # Returns:
-    if list(secret_word) == letters_guessed:
+    if all(elem in list(secret_word) for elem in letters_guessed):
+    # commented out to try dif code - still not working
+    # list(secret_word) == letters_guessed:
         bool = True
 
         print("You have correctly guessed the word. You win!")
@@ -91,24 +93,14 @@ def is_guess_in_word(guess, secret_word):
             print("")
             return True
 
-    print("Wrong guess")
+    print("Sorry, but no. That letter is not in the word.")
     return False
-
-# --- nonfunctional code commented out ---
-#    if str(guess) in word_letters:
-#        print(str(guess) + " is a correct guess")
-#        bool = True
-#        return bool
-#    else:
-#        print("Sorry, but no. That letter is not in the word.")
-#        bool = False
-#        return bool
 
 
     # A function to check if the guessed letter is in the secret word
     # Args:
         # guess (string): The letter the player guessed this round
-        # secret_word (string): The secret word -- ## replaced with word_letters
+        # secret_word (string): The secret word
     #Returns:
         # bool: True if the guess is in the secret_word, False otherwise
 
@@ -127,6 +119,8 @@ def gameplay(secret_word, guess):
         letters_guessed += guess
         if len(guess) > 1:
            print("Please guess only one letter")
+        elif len(guess) == 0:
+           print("Please enter a letter to guess: ")
         else:
            print("Checking to see if letter is in word")
            print("...")

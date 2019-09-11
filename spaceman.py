@@ -203,8 +203,10 @@ def gameplay(secret_word, guess):
 
 
 
+
         running = not is_word_guessed(secret_word, letters_guessed)
         # bool
+
 
 
 
@@ -244,17 +246,6 @@ def spaceman(secret_word):
 #TODO: check if the game has been won or lost
 #These function calls that will start the game
 
-    if running == False:
-        play = input("Would you like to play again? [Y or N] ")
-        if play.upper() == "Y":
-            print("It's on!")
-            guess = " "
-            print("Welcome to the Game of Spaceman")
-            print("You have up to 7 wrong guesses in which to guess ")
-            print("a random secret word")
-            gameplay(secret_word, guess)
-        else:
-            print("Thank you for playing!")
 
 
 

@@ -139,6 +139,7 @@ def gameplay(secret_word, guess):
     wrong_guess_count = 0
 
     while running == True and wrong_guess_count < 7:
+        print("Your secret word contains " + str(len(secret_word)) + " letters")
         guess = input("What letter would you like to guess? ")
         letters_guessed += guess
 
@@ -150,6 +151,8 @@ def gameplay(secret_word, guess):
            print("Checking to see if letter is in word")
            print("...")
         # bool cannot start as false
+
+
 
         if is_guess_in_word(guess, secret_word):
             display = get_guessed_word(secret_word, letters_guessed)

@@ -256,7 +256,7 @@ secret_word = load_word(secret_word)
 # print(load_word(secret_word))
 
 # spaceman(secret_word)
-# ^-- Uncomment to PLAY --^
+# ^-- Uncomment to PLAY -- Comment out to TEST --^
 # changed from "spaceman(load_word())"
 
 def test_get_guessed_word():

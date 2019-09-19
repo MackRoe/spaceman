@@ -255,5 +255,21 @@ secret_word = load_word(secret_word)
 # test to # DEBUG:
 # print(load_word(secret_word))
 
-spaceman(secret_word)
+# spaceman(secret_word)
+# ^-- Uncomment to PLAY --^
 # changed from "spaceman(load_word())"
+
+def test_get_guessed_word():
+    assert get_guessed_word("bamboo", ["b","o"]) == "b__boo", "first error"
+
+def test_is_guess_in_word():
+    assert is_guess_in_word ("x", "quicken") == False, "custom error message F"
+
+def test_is_guess_in_word():
+    assert is_guess_in_word ("q", "quicken") == True, "custom error message T"
+
+def test_is_word_guessed():
+    assert is_word_guessed("pheonix", ["x","p"]) == True, "yet another error F"
+
+def test_is_word_guessed():
+    assert is_word_guessed("pheonix", ["a","z"]) == False, "yet another error F"
